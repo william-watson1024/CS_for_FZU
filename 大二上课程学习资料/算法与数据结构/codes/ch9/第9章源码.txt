@@ -1,0 +1,10 @@
+编号	文件名	编码功能概要
+1	ufset.h	数组实现并查集
+2	ufset2.h	树实现并查集
+3	ufset3.h	小树合并到大树
+4	setitem.h	有序集元素类型
+5	minheap.h	极小化堆
+6	testuf.c	测试并查集
+7	onmin.c	在线最小值
+8	offmin.c	离线最小值
+9	friend.c	朋友圈问题

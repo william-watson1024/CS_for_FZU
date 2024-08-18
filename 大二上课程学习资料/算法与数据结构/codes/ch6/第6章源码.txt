@@ -1,0 +1,24 @@
+编号	文件名	编码功能概要
+1	btnode.h	二叉树结点类型
+2	treeitem.h	树元素类型
+3	treeitem1.h	树元素类型(boost)
+4	ttnode.h	线索二叉树结点类型
+5	stackitem.h	栈元素类型 btlink
+6	qitem.h	队列元素类型 btlink
+7	lstack.h	链栈
+8	stacknode.h	栈结点
+9	lqueue.h	链队列
+10	qnode.h	队列结点
+11	binary.h	二叉树
+12	booster.h	booster 结构
+13	bstree.h	二叉搜索树
+14	bstnode.h	二叉搜索树结点类型
+15	segtree.h	线段树
+16	seqtree.h	序列树
+17	seqtree1.h	序列树1
+18	testree.c	测试二叉树
+19	testbst.c	测试二叉搜索树
+20	testseg.c	测试线段树
+21	testseqtree.c	测试序列树
+22	booster.c	信号增强装置布局
+23	lcis.c	最长连续递增子序列

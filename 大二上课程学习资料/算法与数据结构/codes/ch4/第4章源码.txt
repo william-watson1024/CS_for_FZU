@@ -1,0 +1,11 @@
+编号	文件名	编码功能概要
+1	qnode.h	指针队列结点
+2	qitem.h	队列元素类型
+3	lqueue.h	用指针实现队列
+4	queue.h	用循环数组实现队列
+5	qitem2.h	队列元素类型（位置）
+6	make2db.h  动态2维数组
+7	testq.c	测试队列
+8	wire.c	电路布线
+9	window.c	 窗口查询问题
+

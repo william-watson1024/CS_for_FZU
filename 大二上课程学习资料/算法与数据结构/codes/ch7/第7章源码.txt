@@ -1,0 +1,21 @@
+编号	文件名	编码功能概要
+1	set.h	位向量集合
+2	linkedset.h	链表集合
+3	atable.h	数组实现符号表
+4	hash.h	闭散列表
+5	linkedhash.h	开散列表
+6	setitem.h	集合元素类型
+7	setitem2.h	字符串元素类型
+8	cchain.h	单循环链表
+9	ccnode.h	单循环链表结点
+10	setnode.h	集合链表结点
+11	strfreq.h	字符串的散列函数
+12	listitem.h	表元素指针类型
+13	testbit.c	测试位向量集合
+14	testlset.c	测试链表集合
+15	testatable.c	测试数组实现符号表
+16	testhash.c	测试散列表
+17	testlinkedhash.c	测试开散列表
+18	unique.c	元素唯一性问题
+19	freq.c	字符串频率统计
+

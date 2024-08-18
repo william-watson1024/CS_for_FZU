@@ -1,0 +1,12 @@
+编号	文件名	编码功能概要
+1	stack.h	用数组实现栈
+2	stackitem.h	栈元素类型
+3	stacknode.h	栈结点
+4	lstack.h	用指针实现栈
+5	chain.h	指针实现表
+6	listitem.h	表元素类型
+7	cnode.h	单链表结点
+8	paren.c	括号匹配
+9	equiv.c	等价类划分
+10	teststack.c	测试栈
+11	hist.c	直方图最大面积矩形

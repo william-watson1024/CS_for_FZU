@@ -14,4 +14,4 @@
 
 
 
-![FLOrxXaaIAE7kkV](D:\图片\东方\あさめし\FLOrxXaaIAE7kkV.jpg)
+![koishi](https://i.postimg.cc/Wp9TKkCL/FLOrx-Xaa-IAE7kk-V.jpg)

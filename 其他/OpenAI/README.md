@@ -52,6 +52,7 @@
 ## API食用方法
 
 #### 1.打开 [对话网站](https://chat.fzuer.pp.ua/)
+项目[Github地址](https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web)
 
 #### 2.输入对应的 接口地址 以及 API Key
 

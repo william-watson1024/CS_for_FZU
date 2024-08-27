@@ -1,0 +1,7 @@
+11.1.3 InnoDB存储引擎
+
+# 使用管理员身份运行命令行窗口，停止MySQL80服务
+net stop MySQL80
+
+# 启动MySQL80服务
+net start MySQL80

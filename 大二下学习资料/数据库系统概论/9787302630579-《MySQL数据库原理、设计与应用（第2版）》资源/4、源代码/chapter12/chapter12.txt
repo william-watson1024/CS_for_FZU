@@ -1,0 +1,134 @@
+﻿12.1.1 使用APT安装MySQL
+
+1.更新MySQL APT存储库的包信息
+apt-get update
+2.使用APT安装MySQL
+apt install mysql-server
+3.查看MySQL的状态
+systemctl status mysql
+# 重启MySQL服务
+systemctl restart mysql
+# 停止MySQL服务
+systemctl stop mysql
+4.登录MySQL服务器并设置登录密码
+mysql -uroot -p
+多学一招：使用APT删除MySQL
+apt-get remove mysql-server
+apt-get autoremove
+dpkg -l | grep mysql | grep ii
+
+12.1.2 编译安装MySQL
+
+1.安装wget工具
+apt install wget
+2.安装编译工具和依赖包
+apt install cmake build-essential libssl-dev libncurses5-dev pkg-config bison doxygen libudev-dev
+3.获取MySQL的源代码
+wget https://downloads.mysql.com/archives/get/p/23/file/mysql-boost-8.0.27.tar.gz
+tar -zxvf mysql-boost-8.0.27.tar.gz
+ls
+4.编译MySQL
+cd mysql-8.0.27
+cmake -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_DATADIR=/usr/local/mysql/data -DWITH_BOOST=boost -DWITH_SYSTEMD=1 -DSYSTEMD_PID_DIR=/var/lib/mysql -DFORCE_INSOURCE_BUILD=ON
+make
+5.安装MySQL
+make install
+cd /usr/local/mysql
+6.创建配置文件
+vi /etc/my.cnf
+7.创建用户组
+groupadd mysql
+useradd -r -M -g mysql -s /bin/false mysql
+8.初始化数据库
+./bin/mysqld --initialize-insecure
+chmod 755 /var/lib/mysql
+cd /var/lib/mysql
+9.管理MySQL服务
+cp /home/ubuntu/mysql-8.0.27/scripts/mysqld.service /usr/lib/systemd/system/
+systemctl start mysqld.service
+systemctl status mysqld.service
+systemctl enable mysqld
+systemctl list-unit-files | grep mysqld
+10.登录MySQL
+cd /usr/local/mysql/bin
+./mysql -uroot
+ln -s `pwd`/mysql /usr/local/bin/mysql
+cd
+mysql -uroot -p123456
+多学一招：创建远程登录用户
+apt install firewalld
+firewall-cmd --zone=public --add-port=3306/tcp --permanent
+systemctl reload firewalld.service
+firewall-cmd --zone=public --query-port=3306/tcp
+ mysql –h 192.168.48.128 –u mydb –p
+
+12.3.1 数据备份
+
+cd /usr/local/mysql/bin
+./mysqldump -uroot -p test1 >~/test.sql
+cat ~/test.sql
+
+12.3.2 数据还原
+
+1.使用mysql命令还原数据
+mysql -uroot -p
+mysql -uroot -p test2 < ~/test.sql
+mysql -uroot -p test2
+2.使用source命令还原数据
+mysql -uroot -p123456
+
+12.3.3 二进制日志
+
+2.查看二进制日志文件
+ls /var/lib/mysql | grep binlog
+cat /var/lib/mysql/binlog.index
+3.查看二进制日志内容
+cd /usr/local/mysql/bin
+./mysqlbinlog /var/lib/mysql/binlog.000001
+./mysqlbinlog /var/lib/mysql/binlog.000001 | mysql -uroot -p123456
+./mysqlbinlog --stop-datetime='2022-08-01 15:00:00' /var/lib/mysql/binlog.000001 | mysql -uroot -p123456
+
+12.4 多实例部署
+
+1.更改配置文件
+vi /etc/my.cnf
+2.初始化数据库
+cd /usr/local/mysql/bin
+./mysqld --initialize-insecure --datadir=/var/lib/mysql-replica01
+./mysqld --initialize-insecure --datadir=/var/lib/mysql-replica02
+3.启动多实例服务
+cp /home/ubuntu/mysql-8.0.27/scripts/mysqld@.service /usr/lib/systemd/system/
+systemctl start mysqld@replica01
+systemctl start mysqld@replica02
+systemctl enable mysqld@replica01
+systemctl enable mysqld@replica02
+ss -tnlp | grep mysql
+4.登录并设置密码
+mysql -h127.0.0.1 -P3307 -uroot
+mysql -h127.0.0.1 -P3308 -uroot
+
+12.5.3 实现主从复制
+
+1.修改配置文件
+vi /etc/my.cnf
+systemctl restart mysqld@replica01
+systemctl restart mysqld@replica02
+2.在主服务器中创建用户
+mysql -h127.0.0.1 -P3307 -uroot -p
+4.从服务器同步数据
+mysql -h127.0.0.1 -P3308 -uroot -p
+
+12.6 动手实践：读写分离
+
+停止MyCat服务
+bin/mycat stop
+
+启动MyCat服务
+bin/mycat start
+
+查看MyCat服务的状态
+tail -f logs/wrapper.log
+
+登录MyCat服务器
+mysql -h 127.0.0.1 -P 8066 -u root -p
+

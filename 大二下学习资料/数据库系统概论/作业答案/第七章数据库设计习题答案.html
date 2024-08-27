@@ -1,0 +1,331 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>第七章数据库设计习题</title>
+  <style>:root {
+  --color-primary: hsl(212, 89%, 53%);
+  --color-secondary: hsl(208, 7%, 46%);
+  --color-pass: hsl(100, 60%, 47%);
+  --color-danger: hsl(3, 68%, 53%);
+  --color-warning: hsl(35, 90%, 50%);
+  --color-ac: hsl(3, 89%, 53%);
+  --color-wa: hsl(100, 89%, 53%);
+  --color-pta: hsl(212, 87%, 30%);
+  --color-pds: hsl(23, 100%, 57%);
+  --color-pat: hsl(199, 88%, 57%);
+  --color-oms: hsl(175, 74%, 37%);
+  --color-zoj: hsl(227, 59%, 40%);
+  --color-es: hsl(45, 100%, 50%);
+  --text-black: hsl(0, 0%, 0%);
+  --text-dark: hsl(0, 0%, 10%);
+  --text-normal: hsl(0, 0%, 25%);
+  --text-light: hsl(0, 0%, 45%);
+  --text-lightest: hsl(0, 0%, 60%);
+  --text-white: hsl(0, 0%, 100%);
+  --text-black-r: hsl(0, 0%, 100%);
+  --border-all: hsl(0, 0%, 91%);
+  --bg-base: hsl(0, 0%, 100%);
+  --bg-light: hsl(0, 0%, 97%);
+  --bg-normal: hsl(0, 0%, 94%);
+  --bg-site: hsl(203, 33%, 95%);
+  --bg-base-r: hsl(0, 0%, 25%);
+  --active-brightness-diff: 0.85;
+}
+.paper {
+  margin: 0;
+  font-family: -apple-system, "PingFang SC", "Lantinghei SC", "Helvetica Neue", "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+}
+.paper *,
+.paper *::before,
+.paper *::after {
+  box-sizing: border-box;
+}
+.paper pre,
+.paper code,
+.paper kbd,
+.paper samp {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+}
+.paper pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  overflow: auto;
+  -ms-overflow-style: scrollbar;
+}
+.paper label {
+  display: inline-block;
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+.paper hr {
+  height: 0;
+  border: 0;
+  border-top: 1px solid #ddd;
+  margin: 0;
+}
+.paper .result table {
+  width: 100%;
+}
+.paper .result th,
+.paper .result td {
+  border: 1px solid #ddd;
+  text-align: center;
+}
+.paper .result .box {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+/* stylelint-disable */
+.ques-view, .rendered-markdown {
+  line-height: 1.5;
+}
+.ques-view p, .rendered-markdown p {
+  margin: 0.5em 0;
+}
+.ques-view h1, .rendered-markdown h1, .ques-view h2, .rendered-markdown h2, .ques-view h3, .rendered-markdown h3, .ques-view h4, .rendered-markdown h4, .ques-view h5, .rendered-markdown h5, .ques-view h6, .rendered-markdown h6 {
+  margin: 0.8em 0;
+}
+.ques-view img, .rendered-markdown img {
+  max-width: 100%;
+}
+.ques-view .ques-list, .rendered-markdown .ques-list {
+  padding-left: 50px;
+}
+.ques-view .ques-list li, .rendered-markdown .ques-list li {
+  position: relative;
+  list-style-type: upper-alpha;
+}
+.ques-view .ques-list input, .rendered-markdown .ques-list input {
+  position: absolute;
+  left: -40px;
+  top: 50%;
+  margin-top: -7px;
+}
+.ques-view textarea, .rendered-markdown textarea {
+  border-radius: 2px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  min-height: 100px;
+}
+.ques-view code, .rendered-markdown code {
+  font-size: 12px;
+  background: var(--bg-light);
+  border-radius: 3px;
+  border: 1px solid var(--border-all);
+  padding: 0 3px;
+  color: #e74c3c;
+  margin: 0 2px;
+}
+.ques-view pre, .rendered-markdown pre {
+  padding: 6px 12px;
+  background: var(--bg-light);
+  border: 1px solid var(--border-all);
+  border-radius: 3px;
+  word-break: break-all;
+}
+.ques-view pre code, .rendered-markdown pre code {
+  background: none;
+  border: none;
+  color: var(--text-normal);
+  padding: 0;
+  margin: 0;
+}
+.ques-view hr, .rendered-markdown hr {
+  border: none;
+  border-top: 1px solid var(--border-all);
+}
+.ques-view blockquote, .rendered-markdown blockquote {
+  margin: 0.5em 0;
+  padding: 2px 14px;
+  font-size: 12px;
+  background: var(--bg-light);
+  border-left: 4px solid var(--border-all);
+}
+.ques-view table, .rendered-markdown table {
+  margin: 0 auto;
+}
+.ques-view table th, .rendered-markdown table th, .ques-view table td, .rendered-markdown table td {
+  border: 1px solid var(--border-all);
+  padding: 2px 4px;
+  font-size: 12px;
+}
+.ques-view .ques-score, .rendered-markdown .ques-score {
+  color: var(--text-light);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.rendered-markdown blockquote {
+  margin: 0.5em 0;
+  padding: 2px 14px;
+  font-size: 12px;
+  background: var(--bg-light);
+  border-left: 4px solid var(--border-all);
+}
+.rendered-markdown blockquote p {
+  margin-bottom: 0;
+}
+.rendered-markdown table td, .rendered-markdown table th {
+  border: 1px solid var(--border-all);
+  padding: 5px;
+}
+.rendered-markdown p:first-child {
+  margin: 0;
+}
+.katex-mathml {
+  display: none;
+}
+.code {
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Monaco, Courier, "Courier New", monospace;
+}
+</style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.7.1/dist/katex.min.css" integrity="sha256-tkzDFSl16wERzhCWg0ge2tON2+D6Qe9iEaJqM4ZGd4E=" crossorigin="anonymous">
+</head>
+<body>
+
+<div><div class="paper" style="max-width:940px;margin:auto" data-reactroot=""><div style="padding:16px;text-align:center;font-size:24px;font-weight:bold">第七章数据库设计习题</div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">开始时间</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="2021/05/17 18:00:00">2021/05/17 18:00:00</span></div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">结束时间</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="2021/05/25 23:59:00">2021/05/25 23:59:00</span></div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">答题时长</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="11879分钟">11879分钟</span></div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">答卷类型</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="标准答案">标准答案</span></div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">总分</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="100">100</span></div><hr/><div style="display:flex;font-size:16px;margin-top:16px"><span style="flex-grow:1;font-weight:bold">判断题</span><span>得分：暂无</span><span style="margin-left:20px">总分：3</span></div><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">1-1</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>概念模型依赖于DBMS和硬件设备。  </p>
+</div></div><div style="color:gray;word-break:keep-all">(1分)</div></div><div style="display:flex;width:100px;justify-content:space-between"><div><input type="radio" id="TRUE" name="1394215737184550912" value="TRUE" disabled=""/><label style="margin-left:4px" for="TRUE">T</label></div><div><input type="radio" id="FALSE" name="1394215737184550912" value="FALSE" disabled="" checked=""/><label style="margin-left:4px" for="FALSE">F</label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">1-2</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>概念结构设计中最经常采用的策略是自顶向下的方法。  </p>
+</div></div><div style="color:gray;word-break:keep-all">(1分)</div></div><div style="display:flex;width:100px;justify-content:space-between"><div><input type="radio" id="TRUE" name="1394215737184550913" value="TRUE" disabled=""/><label style="margin-left:4px" for="TRUE">T</label></div><div><input type="radio" id="FALSE" name="1394215737184550913" value="FALSE" disabled="" checked=""/><label style="margin-left:4px" for="FALSE">F</label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">1-3</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>描述概念模型的有力工具是数据字典。  </p>
+</div></div><div style="color:gray;word-break:keep-all">(1分)</div></div><div style="display:flex;width:100px;justify-content:space-between"><div><input type="radio" id="TRUE" name="1394215737184550914" value="TRUE" disabled=""/><label style="margin-left:4px" for="TRUE">T</label></div><div><input type="radio" id="FALSE" name="1394215737184550914" value="FALSE" disabled="" checked=""/><label style="margin-left:4px" for="FALSE">F</label></div></div></div></div></div><hr/><div style="display:flex;font-size:16px;margin-top:16px"><span style="flex-grow:1;font-weight:bold">单选题</span><span>得分：暂无</span><span style="margin-left:20px">总分：18</span></div><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-1</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>如何构造出一个合适的数据逻辑结构是（）阶段主要解决的问题 。</p>
+</div></div><div style="color:gray;word-break:keep-all">(1分)</div></div><div><div><input type="radio" id="A" name="1394216305378525184" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>物理结构设计</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1394216305378525184" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>数据字典</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1394216305378525184" value="C" disabled="" checked=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>逻辑结构设计</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1394216305378525184" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>关系数据库查询</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-2</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>数据库物理设计完成后，进入数据库实施阶段工作中,( )一般不属于实施阶段的工作。</p>
+</div></div><div style="color:gray;word-break:keep-all">(1分)</div></div><div><div><input type="radio" id="A" name="1394216305382719488" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>建立库结构</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1394216305382719488" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>系统调试</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1394216305382719488" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>加载数据</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1394216305382719488" value="D" disabled="" checked=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>扩充功能</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-3</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>在关系数据库设计中，设计关系模式是数据库设计中（）阶段的任务。</p>
+</div></div><div style="color:gray;word-break:keep-all">(1分)</div></div><div><div><input type="radio" id="A" name="1394216305382719489" value="A" disabled="" checked=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>逻辑设计阶段</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1394216305382719489" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>概念设计阶段</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1394216305382719489" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>物理设计阶段</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1394216305382719489" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>需求分析阶段</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-4</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>在概念模型中的客观存在并可相互区别的事物称( )。</p>
+</div></div><div style="color:gray;word-break:keep-all">(1分)</div></div><div><div><input type="radio" id="A" name="1394216305382719490" value="A" disabled="" checked=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>实体</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1394216305382719490" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>元组</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1394216305382719490" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>属性</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1394216305382719490" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>节点</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-5</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>区分不同实体的依据是( )。</p>
+</div></div><div style="color:gray;word-break:keep-all">(1分)</div></div><div><div><input type="radio" id="A" name="1394216305382719491" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>名称</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1394216305382719491" value="B" disabled="" checked=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>属性</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1394216305382719491" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>对象</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1394216305382719491" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>概念</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-6</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>关系数据库中，实现实体之间的联系是通过关系与关系之间的( )。</p>
+</div></div><div style="color:gray;word-break:keep-all">(1分)</div></div><div><div><input type="radio" id="A" name="1394216305382719492" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>公共索引</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1394216305382719492" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>公共存储</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1394216305382719492" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>公共元组</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1394216305382719492" value="D" disabled="" checked=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>公共属性</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-7</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>数据流程图是用于数据库设计中（）阶段的工具。</p>
+</div></div><div style="color:gray;word-break:keep-all">(1分)</div></div><div><div><input type="radio" id="A" name="1394216305382719493" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>概要设计</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1394216305382719493" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>可行性分析</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1394216305382719493" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>程序编码</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1394216305382719493" value="D" disabled="" checked=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>需求分析</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-8</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>子模式DDL是用来描述( )。</p>
+</div></div><div style="color:gray;word-break:keep-all">(1分)</div></div><div><div><input type="radio" id="A" name="1394216305382719494" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>数据库的总体逻辑结构</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1394216305382719494" value="B" disabled="" checked=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>数据库的局部逻辑结构</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1394216305382719494" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>数据库的物理存储结构</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1394216305382719494" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>数据库的概念结构</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-9</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>关系数据库的规范化理论主要解决的问题是( )。</p>
+</div></div><div style="color:gray;word-break:keep-all">(1分)</div></div><div><div><input type="radio" id="A" name="1394216305382719495" value="A" disabled="" checked=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>如何构造合适的数据逻辑结构</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1394216305382719495" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>如何构造合适的数据物理结构</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1394216305382719495" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>如何构造合适的应用程序界面</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1394216305382719495" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>如何控制不同用户的数据操作权限</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-10</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>在ER模型中，如果有3个不同的实体型，3个M：N联系，根据ER模型转换为关系模型的规则，转换为关系的数目是( )。</p>
+</div></div><div style="color:gray;word-break:keep-all">(1分)</div></div><div><div><input type="radio" id="A" name="1394216305382719496" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>4</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1394216305382719496" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>5</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1394216305382719496" value="C" disabled="" checked=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>6</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1394216305382719496" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>7</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-11</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>设计ER图的过程中，最后一步要做的是( )。</p>
+</div></div><div style="color:gray;word-break:keep-all">(1分)</div></div><div><div><input type="radio" id="A" name="1394216305382719497" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>确定实体型</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1394216305382719497" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>确定联系类型</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1394216305382719497" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>确定实体型和联系类型的属性</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1394216305382719497" value="D" disabled="" checked=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>确定实体型的键</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-12</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>不属于需求分析阶段工作的是?</p>
+</div></div><div style="color:gray;word-break:keep-all">(1分)</div></div><div><div><input type="radio" id="A" name="1394216305382719498" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>分析用户活动</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1394216305382719498" value="B" disabled="" checked=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>建立E-R图</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1394216305382719498" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>建立数据字典</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1394216305382719498" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>建立数据流图</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-13</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>一个工人可以加工多种零件，每一种零件可以由不同的工人来加工，工人和零件之间为（ ）的联系。</p>
+</div></div><div style="color:gray;word-break:keep-all">(1分)</div></div><div><div><input type="radio" id="A" name="1394216305382719499" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>1对1</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1394216305382719499" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>1对多</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1394216305382719499" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>多对1</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1394216305382719499" value="D" disabled="" checked=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>多对多</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-14</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>在下列实体联系中，属于一对一联系的是。</p>
+</div></div><div style="color:gray;word-break:keep-all">(1分)</div></div><div><div><input type="radio" id="A" name="1394216305382719500" value="A" disabled="" checked=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>机票与座位号之间的联系</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1394216305382719500" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>车间与工人之间的联系</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1394216305382719500" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>商店与商品之间的联系</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1394216305382719500" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>学生与课程之间的联系</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-15</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>从概念模型到数据模型的转换过程叫做（）,也叫做抽象过程。</p>
+</div></div><div style="color:gray;word-break:keep-all">(1分)</div></div><div><div><input type="radio" id="A" name="1394216305382719501" value="A" disabled="" checked=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>数据建模</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1394216305382719501" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>数据转换</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1394216305382719501" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>数据封装</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1394216305382719501" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>数据载入</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-16</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>设计ER图，合并各种冲突，是（）阶段的任务。</p>
+</div></div><div style="color:gray;word-break:keep-all">(1分)</div></div><div><div><input type="radio" id="A" name="1394216305382719504" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>需求分析阶段</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1394216305382719504" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>逻辑设计阶段</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1394216305382719504" value="C" disabled="" checked=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>概念设计阶段</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1394216305382719504" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>物理设计阶段</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-17</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>在ER图合并的冲突不包括( )。</p>
+</div></div><div style="color:gray;word-break:keep-all">(1分)</div></div><div><div><input type="radio" id="A" name="1394216305382719505" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>属性冲突</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1394216305382719505" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>结构冲突</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1394216305382719505" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>命名冲突</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1394216305382719505" value="D" disabled="" checked=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>类型冲突</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-18</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>当同一个实体集内部的实体之间存在着一个1:N联系时，那么根据ER模型转换成关系模型的规则，这个ER结构转换成的关系模式个数为（    ）。</p>
+</div></div><div style="color:gray;word-break:keep-all">(1分)</div></div><div><div><input type="radio" id="A" name="1394216305382719506" value="A" disabled="" checked=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>1个          </p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1394216305382719506" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>2个         </p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1394216305382719506" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p> 3个               </p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1394216305382719506" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>4个</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="display:flex;font-size:16px;margin-top:16px"><span style="flex-grow:1;font-weight:bold">填空题</span><span>得分：暂无</span><span style="margin-left:20px">总分：79</span></div><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">4-1</div><div style="overflow:auto;flex-grow:1"><div><div class="rendered-markdown"><p>有下面的数据库信息：</p>
+<p>图书信息包括：书号、书名、作者、数量、出版社、单价、架号。出版社信息包括：出版社号、社名、地址、电话、邮编、信箱。读者信息包括：借书证号、姓名、单位。一个出版社可以出版多种书籍，但每本书只能在一个出版社出版，应有出版日期和责任编辑。每个读者可以借阅多本图书，每本图书可以有多人借阅。借阅信息包括：借书日期、还书日期、是否续借。</p>
+<p>请根据语义分析情况回答下面的问题。</p>
+<p>1、对该数据库进行概念结构设计（ER图）时应该有<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="3" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>个实体。</p>
+<p>2、实体出版社、图书、读者对应的属性个数分别是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="6" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>、<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="6" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>、<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="3" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>。</p>
+<p>3、出版社和图书之间的联系是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="1:m|一对多" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>，该联系属性个数为<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="2" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>个，他们是<span data-reactroot=""><input type="text" style="max-width:none;width:20.4ch;max-height:500px" value="出版日期|责任编辑" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>和<span data-reactroot=""><input type="text" style="max-width:none;width:20.4ch;max-height:500px" value="责任编辑|出版日期" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>；图书和读者之间的借阅联系是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="m:n|多对多" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>，该联系属性个数为<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="3" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>个。</p>
+<p>4、根据ER分析结果，至少应生成<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="4" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>个关系模式。其中图书关系模式的主码是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="书号" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>，外码是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="出版社号" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>；借阅联系的主码由<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="2" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>个属性共同构成。其中<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="借书证号|书号" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>和<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="书号|借书证号" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>分别是外码。</p>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">4-2</div><div style="overflow:auto;flex-grow:1"><div><div class="rendered-markdown"><p>某医院病房计算机管理中心需要如下信息查询：</p>
+<p>科室、病房、医生和病人等基本信息。其中：一个科室有多个病房，多名医生；一个病房只能属于一个科室，一个医生只能属于一个科室，但可负责多个病人的诊治，一个病人的主管医生只有一个；一个病房可以有多个病人入住。</p>
+<p>经过分析后的描述信息有：科室的科室名，科室地址，科室电话，医生的工作证号，姓名，职称，年龄，病房的病房号，床位号和病人的病历号，姓名，性别等，同时我们也关心病人的主管医生，所住病房，医生所属科室等信息。</p>
+<p>请根据语义分析情况回答下面的问题。</p>
+<p>1、对该数据库进行概念结构设计（ER图）时应该有<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="4" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>个实体，<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="4" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>个联系。</p>
+<p>2、实体病房、科室、病人对应的属性个数分别是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="2" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>、<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="3" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>、<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="3" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>。</p>
+<p>3、病房和病人之间的联系是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="1:m|一对多" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>，医生和病人之间的联系是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="1:m|一对多" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>。</p>
+<p>4、根据ER分析结果，至少应生成<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="4" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>个关系模式。其中医生关系模式的主码是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="工作证号" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>，外码是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="科室名" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>；病人关系的主码是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="病历号" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>。<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="工作证号|病房号" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>和<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="病房号|工作证号" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>分别是外码。</p>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">4-3</div><div style="overflow:auto;flex-grow:1"><div><div class="rendered-markdown"><p>某旅行社管理系统涉及的部分信息如下：</p>
+<p>景点：景点编号、景点名称、地点、景点描述</p>
+<p>线路：线路编号、线路名称、线路描述</p>
+<p>导游：工号、姓名、等级</p>
+<p>团队：团队编号、人数、开始日期、截止日期</p>
+<p>其中：每条线路有多个景点组成，不同线路的景点存在交叉；每条线路有多名导游，但一名导游只负责一条线路；每条线路可同时存在多个旅游团队，但每个团队只旅游一条线路。</p>
+<p>请根据需求分析情况回答下面的问题。</p>
+<p>1、对该数据库进行概念结构设计（ER图）时应该有<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="4" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>个实体，有<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="3" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>个联系。</p>
+<p>2、实体景点、导游、团队对应的属性个数分别是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="4" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>、<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="3" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>、<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="2" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>。</p>
+<p>3、线路和导游之间的联系是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="1:多|一对多" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>；线路和景点之间的浏览联系是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="m:n|多对多" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>；线路和团队之间的联系是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="1:多|一对多" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>。</p>
+<p>4、根据ER分析结果，至少应生成<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="5" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>个关系模式。其中导游关系模式的主码是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="工号" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>，外码是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="线路编号" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>；浏览联系模式的主码由<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="2" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>个属性共同构成。其中<span data-reactroot=""><input type="text" style="max-width:none;width:20.4ch;max-height:500px" value="线路编号|景点编号" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>和<span data-reactroot=""><input type="text" style="max-width:none;width:20.4ch;max-height:500px" value="景点编号|线路编号" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>分别是外码。</p>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">4-4</div><div style="overflow:auto;flex-grow:1"><div><div class="rendered-markdown"><p>某企业集团有若干工厂，每个工厂生产多种产品，且每一种产品可以在多个工厂生产，每个工厂按照固定的计划数量生产产品；每个工厂聘用多名职工，且每名职工只能在一个工厂工作，工厂聘用职工有聘期和工资。工厂的属性有工厂编号、厂名、地址，产品的属性有产品编号、产品名、规格，职工的属性有职工号、姓名。</p>
+<p>请根据需求分析情况回答下面的问题。</p>
+<p>1、对该数据库进行概念结构设计（ER图）时应该有<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="3" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>个实体，<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="2" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>个联系。</p>
+<p>2、实体职工和产品对应的属性个数分别是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="2" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>、<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="3" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>个。</p>
+<p>3、工厂和职工之间的联系是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="1:m|一对多" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>，其联系的属性个数为<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="2" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>个，分别是；<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="聘期|工资" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>和<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="工资|聘期" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>；工厂和产品之间的生产联系是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="m:n|多对多" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>，该联系属性个数为<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="1" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>个，它是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="计划数量|数量" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>。</p>
+<p>4、根据ER分析结果，至少应生成<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="4" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>个关系模式。其中职工关系模式的主码是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="职工号" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>，外码是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="工厂编号" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>；生产联系的主码由<span data-reactroot=""><input type="text" style="max-width:none;width:20.4ch;max-height:500px" value="工厂编号|产品编号" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>和<span data-reactroot=""><input type="text" style="max-width:none;width:20.4ch;max-height:500px" value="产品编号|工厂编号" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>属性共同构成。其中<span data-reactroot=""><input type="text" style="max-width:none;width:20.4ch;max-height:500px" value="工厂编号|产品编号" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>和<span data-reactroot=""><input type="text" style="max-width:none;width:20.4ch;max-height:500px" value="产品编号|工厂编号" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>分别是外码。</p>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">4-5</div><div style="overflow:auto;flex-grow:1"><div><div class="rendered-markdown"><p>某商业集团的销售管理系统中，有三个实体。一是“商店”实体，属性有商店编号、商店名、地址等；二是“商品”实体，属性有商品号、商品名、规格、单价等；三是“职工”实体，属性有职工编号、姓名、性别、业绩等。商店与商品间存在“销售”联系，每个商店可销售多种商品，每种商品也可放在多个商店销售，每个商店销售的每一种商品，有销售量；商店与职工间存在着“聘用”联系，每个商店有许多职工，每个职工只能在一个商店工作，商店聘用职工有聘期和月薪。</p>
+<p>请根据需求分析情况回答下面的问题。</p>
+<p>1、对该数据库进行概念结构设计（ER图）时应该有<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="3" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>个实体，<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="2" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>个联系。</p>
+<p>2、实体职工和商店对应的属性个数分别是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="4" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>、<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="3" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>个。</p>
+<p>3、商店和职工之间的联系是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="1:m|一对多" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>，其联系的属性个数为<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="2" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>个，分别是；<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="聘期|月薪" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>和<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="月薪|聘期" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>；商店和商品之间的销售联系是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="m:n|多对多" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>，该联系属性个数为<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="1" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>个，它是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="销售量" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>。</p>
+<p>4、根据ER分析结果，应生成<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="4" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>个关系模式。其中职工关系模式的主码是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="职工编号" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>，外码是<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="商店编号" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>；销售联系的主码由<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="商店编号|商品号" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>和<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="商品号|商店编号" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>属性共同构成。其中<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="商店编号|商品号" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>和<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="商品号|商店编号" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>分别是外码。</p>
+</div></div></div></div></div><hr/></div></div>
+
+</body>
+</html>

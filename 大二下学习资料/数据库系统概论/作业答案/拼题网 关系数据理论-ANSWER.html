@@ -1,0 +1,250 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>关系数据理论</title>
+  <style>:root {
+  --color-primary: hsl(212, 89%, 53%);
+  --color-secondary: hsl(208, 7%, 46%);
+  --color-pass: hsl(100, 60%, 47%);
+  --color-danger: hsl(3, 68%, 53%);
+  --color-warning: hsl(35, 90%, 50%);
+  --color-ac: hsl(3, 89%, 53%);
+  --color-wa: hsl(100, 89%, 53%);
+  --color-pta: hsl(212, 87%, 30%);
+  --color-pds: hsl(23, 100%, 57%);
+  --color-pat: hsl(199, 88%, 57%);
+  --color-oms: hsl(175, 74%, 37%);
+  --color-zoj: hsl(227, 59%, 40%);
+  --color-es: hsl(45, 100%, 50%);
+  --text-black: hsl(0, 0%, 0%);
+  --text-dark: hsl(0, 0%, 10%);
+  --text-normal: hsl(0, 0%, 25%);
+  --text-light: hsl(0, 0%, 45%);
+  --text-lightest: hsl(0, 0%, 60%);
+  --text-white: hsl(0, 0%, 100%);
+  --text-black-r: hsl(0, 0%, 100%);
+  --border-all: hsl(0, 0%, 91%);
+  --bg-base: hsl(0, 0%, 100%);
+  --bg-light: hsl(0, 0%, 97%);
+  --bg-normal: hsl(0, 0%, 94%);
+  --bg-site: hsl(203, 33%, 95%);
+  --bg-base-r: hsl(0, 0%, 25%);
+  --active-brightness-diff: 0.85;
+}
+.paper {
+  margin: 0;
+  font-family: -apple-system, "PingFang SC", "Lantinghei SC", "Helvetica Neue", "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+}
+.paper *,
+.paper *::before,
+.paper *::after {
+  box-sizing: border-box;
+}
+.paper pre,
+.paper code,
+.paper kbd,
+.paper samp {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+}
+.paper pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  overflow: auto;
+  -ms-overflow-style: scrollbar;
+}
+.paper label {
+  display: inline-block;
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+.paper hr {
+  height: 0;
+  border: 0;
+  border-top: 1px solid #ddd;
+  margin: 0;
+}
+.paper .result table {
+  width: 100%;
+}
+.paper .result th,
+.paper .result td {
+  border: 1px solid #ddd;
+  text-align: center;
+}
+.paper .result .box {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+/* stylelint-disable */
+.ques-view, .rendered-markdown {
+  line-height: 1.5;
+}
+.ques-view p, .rendered-markdown p {
+  margin: 0.5em 0;
+}
+.ques-view h1, .rendered-markdown h1, .ques-view h2, .rendered-markdown h2, .ques-view h3, .rendered-markdown h3, .ques-view h4, .rendered-markdown h4, .ques-view h5, .rendered-markdown h5, .ques-view h6, .rendered-markdown h6 {
+  margin: 0.8em 0;
+}
+.ques-view img, .rendered-markdown img {
+  max-width: 100%;
+}
+.ques-view .ques-list, .rendered-markdown .ques-list {
+  padding-left: 50px;
+}
+.ques-view .ques-list li, .rendered-markdown .ques-list li {
+  position: relative;
+  list-style-type: upper-alpha;
+}
+.ques-view .ques-list input, .rendered-markdown .ques-list input {
+  position: absolute;
+  left: -40px;
+  top: 50%;
+  margin-top: -7px;
+}
+.ques-view textarea, .rendered-markdown textarea {
+  border-radius: 2px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  min-height: 100px;
+}
+.ques-view code, .rendered-markdown code {
+  font-size: 12px;
+  background: var(--bg-light);
+  border-radius: 3px;
+  border: 1px solid var(--border-all);
+  padding: 0 3px;
+  color: #e74c3c;
+  margin: 0 2px;
+}
+.ques-view pre, .rendered-markdown pre {
+  padding: 6px 12px;
+  background: var(--bg-light);
+  border: 1px solid var(--border-all);
+  border-radius: 3px;
+  word-break: break-all;
+}
+.ques-view pre code, .rendered-markdown pre code {
+  background: none;
+  border: none;
+  color: var(--text-normal);
+  padding: 0;
+  margin: 0;
+}
+.ques-view hr, .rendered-markdown hr {
+  border: none;
+  border-top: 1px solid var(--border-all);
+}
+.ques-view blockquote, .rendered-markdown blockquote {
+  margin: 0.5em 0;
+  padding: 2px 14px;
+  font-size: 12px;
+  background: var(--bg-light);
+  border-left: 4px solid var(--border-all);
+}
+.ques-view table, .rendered-markdown table {
+  margin: 0 auto;
+}
+.ques-view table th, .rendered-markdown table th, .ques-view table td, .rendered-markdown table td {
+  border: 1px solid var(--border-all);
+  padding: 2px 4px;
+  font-size: 12px;
+}
+.ques-view .ques-score, .rendered-markdown .ques-score {
+  color: var(--text-light);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.rendered-markdown blockquote {
+  margin: 0.5em 0;
+  padding: 2px 14px;
+  font-size: 12px;
+  background: var(--bg-light);
+  border-left: 4px solid var(--border-all);
+}
+.rendered-markdown blockquote p {
+  margin-bottom: 0;
+}
+.rendered-markdown table td, .rendered-markdown table th {
+  border: 1px solid var(--border-all);
+  padding: 5px;
+}
+.rendered-markdown p:first-child {
+  margin: 0;
+}
+.katex-mathml {
+  display: none;
+}
+.code {
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Monaco, Courier, "Courier New", monospace;
+}
+</style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.7.1/dist/katex.min.css" integrity="sha256-tkzDFSl16wERzhCWg0ge2tON2+D6Qe9iEaJqM4ZGd4E=" crossorigin="anonymous">
+</head>
+<body>
+
+<div><div class="paper" style="max-width:940px;margin:auto" data-reactroot=""><div style="padding:16px;text-align:center;font-size:24px;font-weight:bold">关系数据理论</div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">开始时间</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="2021/04/25 20:58:00">2021/04/25 20:58:00</span></div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">结束时间</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="2021/05/03 23:59:00">2021/05/03 23:59:00</span></div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">答题时长</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="11701分钟">11701分钟</span></div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">答卷类型</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="标准答案">标准答案</span></div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">总分</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="100">100</span></div><hr/><div style="display:flex;font-size:16px;margin-top:16px"><span style="flex-grow:1;font-weight:bold">单选题</span><span>得分：暂无</span><span style="margin-left:20px">总分：100</span></div><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-1</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>关系模式R中的属性全是主属性，则R的最高范式必定是( )。</p>
+</div></div><div style="color:gray;word-break:keep-all">(10分)</div></div><div><div><input type="radio" id="A" name="1386310148110106624" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>1NF</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1386310148110106624" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>2NF</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1386310148110106624" value="C" disabled="" checked=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>3NF</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1386310148110106624" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>BCNF</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-2</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>设有关系模式R（S，D，M），其函数依赖集：F＝{S→D，D→M}，则关系模式R的规范化程度最高达到( )。</p>
+</div></div><div style="color:gray;word-break:keep-all">(10分)</div></div><div><div><input type="radio" id="A" name="1386310148110106625" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>1NF</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1386310148110106625" value="B" disabled="" checked=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>2NF</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1386310148110106625" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>3NF</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1386310148110106625" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>BCNF</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-3</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>设有关系模型R（A，B，C，D，E），F是R上成立的函数依赖集，F={ABC→DE，BC→D，D→E}， 试问R达到第几范式。</p>
+</div></div><div style="color:gray;word-break:keep-all">(10分)</div></div><div><div><input type="radio" id="A" name="1386310148110106626" value="A" disabled="" checked=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>1NF</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1386310148110106626" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>2NF</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1386310148110106626" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>3NF</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1386310148110106626" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>BCNF</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-5</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>设关系模式R（A,B,C,D,E），R中的属性均不可再分解，函数依赖集F=｛CD→A，CD→B，AB→E｝,若只基于函数依赖进行讨论，R最高属于几范式。</p>
+</div></div><div style="color:gray;word-break:keep-all">(10分)</div></div><div><div><input type="radio" id="A" name="1386310148110106628" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>1NF</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1386310148110106628" value="B" disabled="" checked=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>2NF</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1386310148110106628" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>3NF</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1386310148110106628" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>BCNF</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-6</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>关系模式R(A，B，C，D，E) ，R上的函数依赖集F={AB→E，B→C，C→D }，则R是几范式。</p>
+</div></div><div style="color:gray;word-break:keep-all">(10分)</div></div><div><div><input type="radio" id="A" name="1386310148114300928" value="A" disabled="" checked=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>1NF</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1386310148114300928" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>2NF</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1386310148114300928" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>3NF</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1386310148114300928" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>BCNF</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-7</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>设有关系模式R（A,B,C,D,E），R中的属性均不可再分解，函数依赖集F=｛CD→A，CD→B，AB→E｝,若只基于函数依赖进行讨论，R最高属于第几范式。</p>
+</div></div><div style="color:gray;word-break:keep-all">(10分)</div></div><div><div><input type="radio" id="A" name="1386310148114300929" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>1NF</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1386310148114300929" value="B" disabled="" checked=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>2NF</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1386310148114300929" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>3NF</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1386310148114300929" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>BCNF</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-8</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>关系模式R (商品编号，数量，部门编号，负责人) ，如果有如下规定：每种商品只在一个部门销售； 每个部门只有一个负责人；每种商品只有一个库存数量。问关系模式R最高已经达到第几范式？</p>
+</div></div><div style="color:gray;word-break:keep-all">(10分)</div></div><div><div><input type="radio" id="A" name="1386310148114300930" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>BCNF</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1386310148114300930" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>3NF</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1386310148114300930" value="C" disabled="" checked=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>2NF</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1386310148114300930" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>1NF</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-9</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>关系模式R（U，F），其中U={A，B，C，D，E}，F={A→D，E→D，D→B， BC→D，DC→A}，R分解为3NF的结果是。   </p>
+</div></div><div style="color:gray;word-break:keep-all">(10分)</div></div><div><div><input type="radio" id="A" name="1386312917646786560" value="A" disabled="" checked=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>R={ED，BCD，DCA，EC}</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1386312917646786560" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>R={AD，BCD，DCA，EC}</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1386312917646786560" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>R={DB，BCD，BDA，EC}</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1386312917646786560" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>R={DC，BCD，BEA，EC}</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-10</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>有关系模式A（C，T，H，R，S），基中各属性的含义是：C：课程T：教员H：上课时间R：教室S：学生。函数依赖集： F={C→T，（H，R）→C，（H，T）→R，（H，S）→R}，若将关系模式A分解为两个关系模式A1（C，T），A2（H，R，S），则其中A1的规范化程度达到。</p>
+</div></div><div style="color:gray;word-break:keep-all">(10分)</div></div><div><div><input type="radio" id="A" name="1386312917646786561" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>1NF</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1386312917646786561" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>2NF</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1386312917646786561" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>3NF</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1386312917646786561" value="D" disabled="" checked=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>BCNF</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-11</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>分解规则是指(  )。</p>
+</div></div><div style="color:gray;word-break:keep-all">(10分)</div></div><div><div><input type="radio" id="A" name="1386312917646786562" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>由X→Y，X→Z，有X→YZ</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1386312917646786562" value="B" disabled="" checked=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>由X→Y及 Z是Y的真子集Y，有X→Z</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1386312917646786562" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>若X→Y及Y→Z为F所蕴含，则X→Z为F所蕴含</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1386312917646786562" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>由X→Y，WY→Z，有XW→Z</p>
+</div></div></div></label></div></div></div></div></div><hr/></div></div>
+
+</body>
+</html>

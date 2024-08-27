@@ -1,0 +1,6 @@
+server:
+  port: 8080 # 设置应用端口，默认是8080
+
+spring:
+  application:
+    name: app

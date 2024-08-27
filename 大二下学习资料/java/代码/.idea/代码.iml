@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/第1次课" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第2次课/ConstructorTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第2次课/CrapsTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第2次课/EnhancedForTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第2次课/J_ch3/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第2次课/PassArray/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第2次课/PayrollSystemTest" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第2次课/RandomIntegers/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第2次课/RollDie/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第2次课/ThisTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第2次课/VarargsTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第4次课/GenericMethodTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第4次课/MaximumTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第4次课/OverloadedMethods/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第4次课/TotalNumbers/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第4次课/WildcardTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第5次课/CollectionTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第5次课/EnumTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第5次课/StackTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第5次课/UsingArrays/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第5次课/UsingToArray" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第5次课/VectorTest/src" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/第6次课/Algorithms1/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第6次课/Algorithms2/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第6次课/BinarySearchTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第6次课/DeckOfCards/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第6次课/PriorityQueueTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第6次课/PropertiesTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第6次课/SetTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第6次课/Sort1/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第6次课/Sort2/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第6次课/Sort3/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第6次课/SortedSetTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第6次课/WordTypeCount" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第7次课/CreateTextFileTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第7次课/FileDemonstrationTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第7次课/FileStreamDemo/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第7次课/SequentialFileTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第8次课/ButtonTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/网络多线程/CallableTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/网络多线程/MultiThread/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/网络数据库/PreparedStatementTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/网络数据库/SQL/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/网络编程/TCP/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/网络编程/UDP/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第10次课/MultipleSelectionTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第10次课/BorderLayoutDemo/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第10次课/CardLayout/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第10次课/CheckBoxTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第10次课/ComboBoxTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第10次课/FlowLayoutDemo/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第10次课/JOptionPaneTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第10次课/ListTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第10次课/RadioButtonTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第10次课/TextFieldTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第11次课/MouseTracker/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第11次课/PopupTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第11次课/TextAreaDemo/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第8次课/JFrameSample/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第8次课/LabelTest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第8次课/Texteditor/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第8次课/random_file/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/第9次课/GridLayoutDemo/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/网络多线程/RunnableTest/src" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

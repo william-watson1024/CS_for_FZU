@@ -1,0 +1,14 @@
+2.1.4 选择数据库
+
+登录MySQL时显示用户密码，选择数据库：
+mysql -uroot -p123456 test
+
+登录MySQL时隐藏用户密码，选择数据库：
+mysql -uroot -p test
+
+
+
+
+
+
+

@@ -1,0 +1,51 @@
+
+create database books;
+use books;
+create table authors ( authorID int, firstName Varchar(25), lastName Varchar(25));
+insert into authors values (1,'Harvey', 'Deitel');
+insert into authors values (2,'Paul', 'Deitel');
+insert into authors values (3,'Andrew', 'Goldberg');
+insert into authors values (4,'David', 'choffnes');
+
+create table titles( isbn Varchar(25),  title Varchar(25), editionNumber int, copyright int, publishID int, price float);
+insert into titles values ('1','Visual Basic', 1, 2, 3, 131.40);
+insert into titles values ('2','C# Programming', 1, 2, 3, 121.00);
+insert into titles values ('3','Data Structure', 1, 2, 3, 11.00);
+insert into titles values ('4','Computer Theory', 1, 2, 3, 61.00);
+insert into titles values ('5','Cloud Computing', 1, 2, 3, 81.00);
+insert into titles values ('6','Artificial Intelligence', 1, 2, 3, 181.00);
+insert into titles values ('7','C Language', 1, 2, 3, 181.00);
+insert into titles values ('8','JAVA Language', 1, 2, 3, 181.00);
+insert into titles values ('9','Computer Network', 1, 2, 3, 181.00);
+insert into titles values ('10','Python', 1, 2, 3, 181.00);
+
+create table authorISBN(authorID int, isbn Varchar(25));
+insert into authorISBN values (1, '2');
+insert into authorISBN values (1, '1');
+insert into authorISBN values (1, '3');
+insert into authorISBN values (1, '4');
+insert into authorISBN values (1, '5');
+insert into authorISBN values (2, '2');
+insert into authorISBN values (2, '10');
+insert into authorISBN values (2, '7');
+insert into authorISBN values (2, '6');
+insert into authorISBN values (2, '5');
+insert into authorISBN values (3, '3');
+insert into authorISBN values (3, '4');
+insert into authorISBN values (3, '5');
+insert into authorISBN values (3, '6');
+insert into authorISBN values (3, '7');
+insert into authorISBN values (4, '6');
+insert into authorISBN values (4, '7');
+insert into authorISBN values (4, '8');
+insert into authorISBN values (4, '9');
+insert into authorISBN values (4, '10');
+
+create database addressbook;
+use addressbook;
+
+create table Addresses ( addressID int,  firstName Varchar(25), lastName Varchar(25), email Varchar(25), phoneNumber Varchar(25));
+insert into Addresses values (1,'Harvey', 'Deitel', 'dasdasd@qq.com', '0175-1321221');
+insert into Addresses values (2,'Paul', 'Deitel', 'LLKLdaad@163.com', '0596-8861155');
+insert into Addresses values (3,'Andrew', 'Goldberg', '123ad@yahoo.com', '0596-81615212');
+insert into Addresses values (4,'David', 'choffnes', '123ad@gmail.com', '0791-81125296');

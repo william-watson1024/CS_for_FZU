@@ -1,0 +1,409 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>第二章关系数据库习题</title>
+  <style>:root {
+  --color-primary: hsl(212, 89%, 53%);
+  --color-secondary: hsl(208, 7%, 46%);
+  --color-pass: hsl(100, 60%, 47%);
+  --color-danger: hsl(3, 68%, 53%);
+  --color-warning: hsl(35, 90%, 50%);
+  --color-ac: hsl(3, 89%, 53%);
+  --color-wa: hsl(100, 89%, 53%);
+  --color-pta: hsl(212, 87%, 30%);
+  --color-pds: hsl(23, 100%, 57%);
+  --color-pat: hsl(199, 88%, 57%);
+  --color-oms: hsl(175, 74%, 37%);
+  --color-zoj: hsl(227, 59%, 40%);
+  --color-es: hsl(45, 100%, 50%);
+  --text-black: hsl(0, 0%, 0%);
+  --text-dark: hsl(0, 0%, 10%);
+  --text-normal: hsl(0, 0%, 25%);
+  --text-light: hsl(0, 0%, 45%);
+  --text-lightest: hsl(0, 0%, 60%);
+  --text-white: hsl(0, 0%, 100%);
+  --text-black-r: hsl(0, 0%, 100%);
+  --border-all: hsl(0, 0%, 91%);
+  --bg-base: hsl(0, 0%, 100%);
+  --bg-light: hsl(0, 0%, 97%);
+  --bg-normal: hsl(0, 0%, 94%);
+  --bg-site: hsl(203, 33%, 95%);
+  --bg-base-r: hsl(0, 0%, 25%);
+  --active-brightness-diff: 0.85;
+}
+.paper {
+  margin: 0;
+  font-family: -apple-system, "PingFang SC", "Lantinghei SC", "Helvetica Neue", "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+}
+.paper *,
+.paper *::before,
+.paper *::after {
+  box-sizing: border-box;
+}
+.paper pre,
+.paper code,
+.paper kbd,
+.paper samp {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+}
+.paper pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  overflow: auto;
+  -ms-overflow-style: scrollbar;
+}
+.paper label {
+  display: inline-block;
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+.paper hr {
+  height: 0;
+  border: 0;
+  border-top: 1px solid #ddd;
+  margin: 0;
+}
+.paper .result table {
+  width: 100%;
+}
+.paper .result th,
+.paper .result td {
+  border: 1px solid #ddd;
+  text-align: center;
+}
+.paper .result .box {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+/* stylelint-disable */
+.ques-view, .rendered-markdown {
+  line-height: 1.5;
+}
+.ques-view p, .rendered-markdown p {
+  margin: 0.5em 0;
+}
+.ques-view h1, .rendered-markdown h1, .ques-view h2, .rendered-markdown h2, .ques-view h3, .rendered-markdown h3, .ques-view h4, .rendered-markdown h4, .ques-view h5, .rendered-markdown h5, .ques-view h6, .rendered-markdown h6 {
+  margin: 0.8em 0;
+}
+.ques-view img, .rendered-markdown img {
+  max-width: 100%;
+}
+.ques-view .ques-list, .rendered-markdown .ques-list {
+  padding-left: 50px;
+}
+.ques-view .ques-list li, .rendered-markdown .ques-list li {
+  position: relative;
+  list-style-type: upper-alpha;
+}
+.ques-view .ques-list input, .rendered-markdown .ques-list input {
+  position: absolute;
+  left: -40px;
+  top: 50%;
+  margin-top: -7px;
+}
+.ques-view textarea, .rendered-markdown textarea {
+  border-radius: 2px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  min-height: 100px;
+}
+.ques-view code, .rendered-markdown code {
+  font-size: 12px;
+  background: var(--bg-light);
+  border-radius: 3px;
+  border: 1px solid var(--border-all);
+  padding: 0 3px;
+  color: #e74c3c;
+  margin: 0 2px;
+}
+.ques-view pre, .rendered-markdown pre {
+  padding: 6px 12px;
+  background: var(--bg-light);
+  border: 1px solid var(--border-all);
+  border-radius: 3px;
+  word-break: break-all;
+}
+.ques-view pre code, .rendered-markdown pre code {
+  background: none;
+  border: none;
+  color: var(--text-normal);
+  padding: 0;
+  margin: 0;
+}
+.ques-view hr, .rendered-markdown hr {
+  border: none;
+  border-top: 1px solid var(--border-all);
+}
+.ques-view blockquote, .rendered-markdown blockquote {
+  margin: 0.5em 0;
+  padding: 2px 14px;
+  font-size: 12px;
+  background: var(--bg-light);
+  border-left: 4px solid var(--border-all);
+}
+.ques-view table, .rendered-markdown table {
+  margin: 0 auto;
+}
+.ques-view table th, .rendered-markdown table th, .ques-view table td, .rendered-markdown table td {
+  border: 1px solid var(--border-all);
+  padding: 2px 4px;
+  font-size: 12px;
+}
+.ques-view .ques-score, .rendered-markdown .ques-score {
+  color: var(--text-light);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.rendered-markdown blockquote {
+  margin: 0.5em 0;
+  padding: 2px 14px;
+  font-size: 12px;
+  background: var(--bg-light);
+  border-left: 4px solid var(--border-all);
+}
+.rendered-markdown blockquote p {
+  margin-bottom: 0;
+}
+.rendered-markdown table td, .rendered-markdown table th {
+  border: 1px solid var(--border-all);
+  padding: 5px;
+}
+.rendered-markdown p:first-child {
+  margin: 0;
+}
+.katex-mathml {
+  display: none;
+}
+.code {
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Monaco, Courier, "Courier New", monospace;
+}
+</style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.7.1/dist/katex.min.css" integrity="sha256-tkzDFSl16wERzhCWg0ge2tON2+D6Qe9iEaJqM4ZGd4E=" crossorigin="anonymous">
+</head>
+<body>
+
+<div><div class="paper" style="max-width:940px;margin:auto" data-reactroot=""><div style="padding:16px;text-align:center;font-size:24px;font-weight:bold">第二章关系数据库习题</div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">开始时间</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="2021/03/19 24:00:00">2021/03/19 24:00:00</span></div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">结束时间</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="2021/03/31 23:59:00">2021/03/31 23:59:00</span></div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">答题时长</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="18719分钟">18719分钟</span></div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">答卷类型</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="标准答案">标准答案</span></div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">总分</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="100">100</span></div><hr/><div style="display:flex;font-size:16px;margin-top:16px"><span style="flex-grow:1;font-weight:bold">判断题</span><span>得分：暂无</span><span style="margin-left:20px">总分：6</span></div><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">1-1</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>实体完整性和参照完整性是基本关系的两个不变性。  </p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div style="display:flex;width:100px;justify-content:space-between"><div><input type="radio" id="TRUE" name="1371847508494020608" value="TRUE" disabled="" checked=""/><label style="margin-left:4px" for="TRUE">T</label></div><div><input type="radio" id="FALSE" name="1371847508494020608" value="FALSE" disabled=""/><label style="margin-left:4px" for="FALSE">F</label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">1-2</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>一个关系模式只能有一个“主键”。（         ）  </p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div style="display:flex;width:100px;justify-content:space-between"><div><input type="radio" id="TRUE" name="1371847732088172544" value="TRUE" disabled=""/><label style="margin-left:4px" for="TRUE">T</label></div><div><input type="radio" id="FALSE" name="1371847732088172544" value="FALSE" disabled="" checked=""/><label style="margin-left:4px" for="FALSE">F</label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">1-3</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>实体完整性要求：关系中任何一个元组在组成“主键”的属性上不能取“空值”。  </p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div style="display:flex;width:100px;justify-content:space-between"><div><input type="radio" id="TRUE" name="1371847732092366848" value="TRUE" disabled="" checked=""/><label style="margin-left:4px" for="TRUE">T</label></div><div><input type="radio" id="FALSE" name="1371847732092366848" value="FALSE" disabled=""/><label style="margin-left:4px" for="FALSE">F</label></div></div></div></div></div><hr/><div style="display:flex;font-size:16px;margin-top:16px"><span style="flex-grow:1;font-weight:bold">单选题</span><span>得分：暂无</span><span style="margin-left:20px">总分：62</span></div><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-1</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>下面选项不是关系数据库基本特征的是（）。</p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1371847930680102912" value="A" disabled="" checked=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>不同的列应有不同的数据类型</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1371847930680102912" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>不同的列应有不同的列名</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1371847930680102912" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>与行的次序无关</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1371847930680102912" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>与列的次序无关</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-2</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>一个关系只有一个（）。</p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1371847930680102913" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>候选码</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1371847930680102913" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>外码</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1371847930680102913" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>超码</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1371847930680102913" value="D" disabled="" checked=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>主码</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-3</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>若D1={a1，a2，a3}，D2={b1，b2，b3，b4}则D1×D2集合中共有元组?</p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1371847930680102914" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>7个</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1371847930680102914" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>3个</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1371847930680102914" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>4个</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1371847930680102914" value="D" disabled="" checked=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>12个</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-4</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>表的每一列叫做字段或（）。</p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1371847930680102915" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>元组</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1371847930680102915" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>域</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1371847930680102915" value="C" disabled="" checked=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>属性</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1371847930680102915" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>分量</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-5</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>表的每一列的所有取值范围称为（）。</p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1371847930680102916" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>元组</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1371847930680102916" value="B" disabled="" checked=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>域</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1371847930680102916" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>属性</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1371847930680102916" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>分量</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-6</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>关系是一组域D1,D2...Dn的（）的子集。</p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1371847930680102917" value="A" disabled="" checked=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>笛卡尔积</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1371847930680102917" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>元组</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1371847930680102917" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>分量</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1371847930680102917" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>属性</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-7</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>下面关于关系模型的描述错误的是________。</p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1371847930680102918" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>关系模式是对关系结构的表示</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1371847930680102918" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>模式的表示方式通常形式是：关系名（属性1，属性2，....，属性n）</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1371847930680102918" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>关系模式中，属性的顺序可以发生变化</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1371847930680102918" value="D" disabled="" checked=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>关系模式中，属性的顺序不可变化，否则就不是原关系模式了</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-8</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>关系数据库中有3种基本操作，从表中选取属性成分的操作称为?</p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1371848069427679232" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>选择</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1371848069427679232" value="B" disabled="" checked=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>投影</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1371848069427679232" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>连接</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1371848069427679232" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>扫描</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-9</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>有关系R和S，R∩S的运算等价于。</p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1371848069427679233" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>S-(R-S)</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1371848069427679233" value="B" disabled="" checked=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>R-(R-S)</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1371848069427679233" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>(R-S)∪S</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1371848069427679233" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>R∪(R-S)</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-10</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>设关系R和S的属性个数分别为r和s，则（R×S）操作结果的属性个数为。</p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1371848069427679234" value="A" disabled="" checked=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>r+s</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1371848069427679234" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>r-s</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1371848069427679234" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>r×s</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1371848069427679234" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>max(r,s)</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-11</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>设关系R和S的属性个数分别为r和s，则R×S操作结果的元组个数为。</p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1371848069427679235" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>r+s</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1371848069427679235" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>r×s</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1371848069427679235" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>r-s</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1371848069427679235" value="D" disabled="" checked=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>无法确定</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-12</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>关系R与关系S只有一个公共属性，T1是R与S等值连接的结果，T2是R与S等值自然连接的结果，则（      ）。</p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1371848069427679236" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>T1的属性个数等于T2的属性个数</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1371848069427679236" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>T1的属性个数小于T2的属性个数</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1371848069427679236" value="C" disabled="" checked=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>T1的属性个数大于T2的属性个数</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1371848069427679236" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>T1的属性个数大于或等于T2的属性个数</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-13</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>关系的完整性约束不包括？</p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1371848179066761216" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>实体完整性</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1371848179066761216" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>参照完整性</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1371848179066761216" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>用户定义完整性</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1371848179066761216" value="D" disabled="" checked=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>结构完整性</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-14</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>下面对于关系的主码的描述，错误的是</p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1371848179070955520" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>一个关系中不能有两个主码</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1371848179070955520" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>一个关系中有且仅有一个主码</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1371848179070955520" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>主码可以是属性的集合</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1371848179070955520" value="D" disabled="" checked=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>主码只能是一个属性</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-15</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>下面关于关系外码的描述，错误的是</p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1371848179070955521" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>外码一定是主码</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1371848179070955521" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>外码一定是候选码</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1371848179070955521" value="C" disabled="" checked=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>外码不一定是候选码或者主码</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1371848179070955521" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>被外码所参照的表中对应的列一定是候选码或者主码</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-16</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>五种基本的关系代数运算是（）。</p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1371848347354845184" value="A" disabled="" checked=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>∪ － ×  σ  π</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1371848347354845184" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>∪ － σ  π</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1371848347354845184" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>∪  ∩  × σ  π</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1371848347354845184" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>∪ ∩  σ  π</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-17</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>从一个数据库文件中取出满足某个条件的所有记录形成一个新数据库文件的操作是( )。</p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1371848347354845185" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>投影</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1371848347354845185" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>连接</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1371848347354845185" value="C" disabled="" checked=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>选择</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1371848347354845185" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>复制</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-18</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>一般情况下，当对关系R和S进行自然连接时，要求R和S含有一个或者多个共有的( )。</p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1371848347354845186" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>记录</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1371848347354845186" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>行</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1371848347354845186" value="C" disabled="" checked=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>属性</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1371848347354845186" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>元组</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-19</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>下列不是关系代数的纯关系操作的符号是（）。</p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1371848347354845187" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>σ</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1371848347354845187" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>π</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1371848347354845187" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>÷</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1371848347354845187" value="D" disabled="" checked=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>×</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-20</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>关系R和S并运算的结果是（）。</p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1371848347354845188" value="A" disabled="" checked=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>关系</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1371848347354845188" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>记录</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1371848347354845188" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>属性值</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1371848347354845188" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>集合</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-21</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>关系代数表达式R－S表示的是（）。</p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1371848347354845189" value="A" disabled="" checked=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>在R中且不在S中的元组</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1371848347354845189" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>在R中或不在S中的元组</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1371848347354845189" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>在S中或不在R中的元组</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1371848347354845189" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>在R中也在S中的元组</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-22</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>两个关系R(A,B,C)和S(B,C)的除运算结果关系中包含属性（）。</p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1371848347354845190" value="A" disabled="" checked=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>A</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1371848347354845190" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>ABC</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1371848347354845190" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>BC</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1371848347354845190" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>不确定</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-23</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>两个关系R(A,B,C)和S(B,C)的除运算结果关系中包含的元组（）。</p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1371848347354845191" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>在R中</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1371848347354845191" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>在S中</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1371848347354845191" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>既可能在R中也可能在S中</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1371848347354845191" value="D" disabled="" checked=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>R中的A属性中的某些分量的集合</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-24</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>关系数据库中的投影操作是指从关系中( )。</p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1371848861735874560" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>抽出特定记录</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1371848861735874560" value="B" disabled="" checked=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>抽出特定字段</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1371848861735874560" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>建立相应的影像</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1371848861735874560" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>建立相应的图形</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-25</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>有三个关系S、R、T如下，则由S、R得到T的运算是（      ）。</p>
+<p><img src="https://images.ptausercontent.com/79ed77e8-fc94-4625-9900-c6e67e745c15.png" alt="微信截图_20200326074552.png"></p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1371848861740068864" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>投影</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1371848861740068864" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>交</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1371848861740068864" value="C" disabled="" checked=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>自然联接</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1371848861740068864" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>笛卡尔积</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-26</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>某关系如下，该关系的主键是（）</p>
+<p><img src="https://images.ptausercontent.com/fcae4495-c8c4-42b6-b58b-b0622b61f87c.png" alt="111.png"></p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1371848861740068865" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>a</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1371848861740068865" value="B" disabled="" checked=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>(a,b)</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1371848861740068865" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>(b,c)</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1371848861740068865" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>(a,c)</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-27</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>设关系R和S的结构相同，且各有10个元组，那么这两个关系的并操作结果的元组个数为(  )</p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1371848861740068866" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>10</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1371848861740068866" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>小于等于10</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1371848861740068866" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>20</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1371848861740068866" value="D" disabled="" checked=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>小于等于20</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-28</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>关系数据库管理系统应能实现的专门关系运算包括（）。</p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1372043897341636608" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>排序、索引、统计</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1372043897341636608" value="B" disabled="" checked=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>选择、投影、连接</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1372043897341636608" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>关联、更新、排序</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1372043897341636608" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>显示、打印、制表</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-29</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>在学生表中有8个字段，要查找所有年龄小于 20 岁且姓王的男生，并且只显示学号，姓名两个字段，那么应采用的关系运算是（     ）。</p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1372043897341636609" value="A" disabled="" checked=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>选择，投影</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1372043897341636609" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>选择，并</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1372043897341636609" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>联接，投影</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1372043897341636609" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>并，差</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-30</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>有三个关系 R，S和 T 如下：</p>
+<p><img src="https://images.ptausercontent.com/5407c5e6-3790-471d-a96e-8719c06d6d62.png" alt="222.png"></p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1372043897341636610" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>选择</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1372043897341636610" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>投影</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1372043897341636610" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>交</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1372043897341636610" value="D" disabled="" checked=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>并</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-31</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p><img src="https://images.ptausercontent.com/cd0883bf-5525-4e9e-813d-0b81e41bc5d1.png" alt="题8.png"></p>
+</div></div><div style="color:gray;word-break:keep-all">(2分)</div></div><div><div><input type="radio" id="A" name="1372043897345830912" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>1</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1372043897345830912" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>3</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1372043897345830912" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>6</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1372043897345830912" value="D" disabled="" checked=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>9</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="display:flex;font-size:16px;margin-top:16px"><span style="flex-grow:1;font-weight:bold">填空题</span><span>得分：暂无</span><span style="margin-left:20px">总分：32</span></div><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">4-1</div><div style="overflow:auto;flex-grow:1"><div><div class="rendered-markdown"><p>有如下数据库:仓库、职工、供应商、订购单,其关系模式如下：</p>
+<p>warehouse(wno,city,size) 各个属性含义依次为：仓库号，城市，面积</p>
+<p>employee(wno,eno,ename,salary) 各个属性含义依次为：仓库号，职工号，职工名，工资</p>
+<p>supplies(sno,sname,addr) 各个属性含义依次为：供应商号，供应商名，地址</p>
+<p>order(eno,sno,ono,date) 各个属性含义依次为：职工号，供应商号，订购单号，订购日期</p>
+<p>用关系代数完成如下任务:</p>
+<p>1、检索在北京的供应商的名称。</p>
+<p>Π<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="sname" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>σ<span data-reactroot=""><input type="text" style="max-width:none;width:27.599999999999998ch;max-height:500px" value="addr=&#x27;北京&#x27;|addr=&quot;北京&quot;" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>(<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="supplies" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>)</p>
+<p>2、检索出职工&#39; 张珊珊&#39;发给供应商S6的订购单号</p>
+<p>Π<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="ono" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>σ<span data-reactroot=""><input type="text" style="max-width:none;width:34.8ch;max-height:500px" value="ename=&#x27;张珊珊&#x27;|ename=&quot;张珊珊&quot;" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>˄<span data-reactroot=""><input type="text" style="max-width:none;width:20.4ch;max-height:500px" value="sno=&#x27;S6&#x27;|sno=&quot;S6&quot;" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>(<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="order|employee" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>∞<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="employee|order" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>)</p>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">4-2</div><div style="overflow:auto;flex-grow:1"><div><div class="rendered-markdown"><p>有供应商-零件-工程项目数据库，由以下四个关系模式构成：</p>
+<p>S（sno, sname, status, city）各属性含义为：供应商号、供应商名、供应商状态、供应商所在城市<br>P（pno, pname, color, weight, city）各属性含义为：零件号、零件名、零件颜色、零件重量、零件生产厂所在城市</p>
+<p>J（jno, jname, city）各属性含义为：工程号、工程名、工程所在城市</p>
+<p>SPJ（sno, pno, jno, qty）各属性含义依次为：供应商号、零件号、工程号、供应零件的数量</p>
+<p>供应商S，零件P，工程项目J分别由供应商号（sno），零件号（pno）和工程项目号（jno）惟一标识。供货SPJ是指由某个供应商向某个工程项目供应某些数量的某种零件。</p>
+<p>请用关系代数完成下面的操作：</p>
+<p>1、求&#39;红色&#39;零件的零件号和零件名。</p>
+<p>Π<span data-reactroot=""><input type="text" style="max-width:none;width:24ch;max-height:500px" value="pno,pname|pno，pname" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>σ<span data-reactroot=""><input type="text" style="max-width:none;width:58.8ch;max-height:500px" value="color=&#x27;红色&#x27;|color=&#x27;red&#x27;|color=&quot;红色&quot;|color=&quot;red&quot;" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>(<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="P" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>)</p>
+<p>2、求工程名为‘三建’的工程使用的零件号及数量。</p>
+<p>Π<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="pno,qty|pno，qty" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>σ<span data-reactroot=""><input type="text" style="max-width:none;width:30ch;max-height:500px" value="jname=&#x27;三建&#x27;|jname=&quot;三建&quot;" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>(<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="J|SPJ" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>∞<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="SPJ|J" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>)</p>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">4-3</div><div style="overflow:auto;flex-grow:1"><div><div class="rendered-markdown"><p>学生—课程数据库由以下四个关系模式构成：</p>
+<p>学生表(学号，姓名，性别，年龄，专业), 其中,学号char,5;姓名char,8;</p>
+<p>授课信息表(课程号，教工号，授课学时)</p>
+<p>教师表(教工号，姓名，性别，职称，所在专业)</p>
+<p>课程表(课程号，课程名，学分，学时)</p>
+<p>选课信息表(学号，课程号，成绩)</p>
+<p>用关系代数完成如下操作:</p>
+<p>1、查询有授课任务教师的姓名、职称和课程号。</p>
+<p>∏<span data-reactroot=""><input type="text" style="max-width:none;width:42ch;max-height:500px" value="姓名,职称,课程号|姓名，职称，课程号" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>(<span data-reactroot=""><input type="text" style="max-width:none;width:20.4ch;max-height:500px" value="授课信息表|教师表" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>∞<span data-reactroot=""><input type="text" style="max-width:none;width:20.4ch;max-height:500px" value="教师表|授课信息表" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>)</p>
+<p>2、查询一下所有选课学生的姓名和成绩。</p>
+<p>∏<span data-reactroot=""><input type="text" style="max-width:none;width:24ch;max-height:500px" value="姓名,成绩|姓名，成绩" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>(<span data-reactroot=""><input type="text" style="max-width:none;width:20.4ch;max-height:500px" value="学生表|选课信息表" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>∞<span data-reactroot=""><input type="text" style="max-width:none;width:20.4ch;max-height:500px" value="选课信息表|学生表" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>)</p>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">4-4</div><div style="overflow:auto;flex-grow:1"><div><div class="rendered-markdown"><p>有如下两个关系：</p>
+<p>学院表（学院号，学院名）</p>
+<p>教师表（职工号，姓名，性别，年龄，电话，入校时间，学院号）</p>
+<p>用关系代数完成下面操作：</p>
+<p>1、查询各学院的教师姓名和入校时间。</p>
+<p>Π<span data-reactroot=""><input type="text" style="max-width:none;width:33.6ch;max-height:500px" value="姓名,入校时间|姓名，入校时间" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>(<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="教师表" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>)</p>
+<p>2、查询年龄小于40岁的教师姓名、所在学院名。</p>
+<p>Π<span data-reactroot=""><input type="text" style="max-width:none;width:28.799999999999997ch;max-height:500px" value="姓名,学院名|姓名，学院名" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>((σ<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="年龄&lt;40(教师表)" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>)∞<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="学院表" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>)</p>
+</div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">4-5</div><div style="overflow:auto;flex-grow:1"><div><div class="rendered-markdown"><p>教师管理数据库由以下三个关系模式构成：</p>
+<p>教师(教师编号，姓名，性别，年龄，职称代码，所在专业，部门代码，联系电话) 教师编号 char，8</p>
+<p>部门（部门代码，部门名称，办公地址，负责人姓名，办公电话）部门代码 char，3</p>
+<p>职称（职称代码，职称名称，所属系列，岗位津贴）职称代码 char，4</p>
+<p>用关系代数完成：</p>
+<p>1、查询职称名称为“正高级”的岗位津贴情况。</p>
+<p>Π<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="岗位津贴" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>(σ<span data-reactroot=""><input type="text" style="max-width:none;width:56.4ch;max-height:500px" value="职称名称=&#x27;正高级&#x27;(职称)|职称名称=&quot;正高级&quot;(职称)" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>)</p>
+<p>2、查询&quot;王一&quot;老师所在部门的负责人姓名和联系电话。</p>
+<p>Π<span data-reactroot=""><input type="text" style="max-width:none;width:48ch;max-height:500px" value="负责人姓名,联系电话|负责人姓名，联系电话" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>(σ<span data-reactroot=""><input type="text" style="max-width:none;width:27.599999999999998ch;max-height:500px" value="姓名=&#x27;王一&#x27;|姓名=&quot;王一&quot;" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>(<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="部门|教师" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>∞<span data-reactroot=""><input type="text" style="max-width:none;width:19.2ch;max-height:500px" value="教师|部门" disabled=""/><span style="margin-left:4px;color:gray">(1分)</span></span>))</p>
+</div></div></div></div></div><hr/></div></div>
+
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>第四、五章习题</title>
+  <style>:root {
+  --color-primary: hsl(212, 89%, 53%);
+  --color-secondary: hsl(208, 7%, 46%);
+  --color-pass: hsl(100, 60%, 47%);
+  --color-danger: hsl(3, 68%, 53%);
+  --color-warning: hsl(35, 90%, 50%);
+  --color-ac: hsl(3, 89%, 53%);
+  --color-wa: hsl(100, 89%, 53%);
+  --color-pta: hsl(212, 87%, 30%);
+  --color-pds: hsl(23, 100%, 57%);
+  --color-pat: hsl(199, 88%, 57%);
+  --color-oms: hsl(175, 74%, 37%);
+  --color-zoj: hsl(227, 59%, 40%);
+  --color-es: hsl(45, 100%, 50%);
+  --text-black: hsl(0, 0%, 0%);
+  --text-dark: hsl(0, 0%, 10%);
+  --text-normal: hsl(0, 0%, 25%);
+  --text-light: hsl(0, 0%, 45%);
+  --text-lightest: hsl(0, 0%, 60%);
+  --text-white: hsl(0, 0%, 100%);
+  --text-black-r: hsl(0, 0%, 100%);
+  --border-all: hsl(0, 0%, 91%);
+  --bg-base: hsl(0, 0%, 100%);
+  --bg-light: hsl(0, 0%, 97%);
+  --bg-normal: hsl(0, 0%, 94%);
+  --bg-site: hsl(203, 33%, 95%);
+  --bg-base-r: hsl(0, 0%, 25%);
+  --active-brightness-diff: 0.85;
+}
+.paper {
+  margin: 0;
+  font-family: -apple-system, "PingFang SC", "Lantinghei SC", "Helvetica Neue", "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+}
+.paper *,
+.paper *::before,
+.paper *::after {
+  box-sizing: border-box;
+}
+.paper pre,
+.paper code,
+.paper kbd,
+.paper samp {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+}
+.paper pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  overflow: auto;
+  -ms-overflow-style: scrollbar;
+}
+.paper label {
+  display: inline-block;
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+.paper hr {
+  height: 0;
+  border: 0;
+  border-top: 1px solid #ddd;
+  margin: 0;
+}
+.paper .result table {
+  width: 100%;
+}
+.paper .result th,
+.paper .result td {
+  border: 1px solid #ddd;
+  text-align: center;
+}
+.paper .result .box {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+/* stylelint-disable */
+.ques-view, .rendered-markdown {
+  line-height: 1.5;
+}
+.ques-view p, .rendered-markdown p {
+  margin: 0.5em 0;
+}
+.ques-view h1, .rendered-markdown h1, .ques-view h2, .rendered-markdown h2, .ques-view h3, .rendered-markdown h3, .ques-view h4, .rendered-markdown h4, .ques-view h5, .rendered-markdown h5, .ques-view h6, .rendered-markdown h6 {
+  margin: 0.8em 0;
+}
+.ques-view img, .rendered-markdown img {
+  max-width: 100%;
+}
+.ques-view .ques-list, .rendered-markdown .ques-list {
+  padding-left: 50px;
+}
+.ques-view .ques-list li, .rendered-markdown .ques-list li {
+  position: relative;
+  list-style-type: upper-alpha;
+}
+.ques-view .ques-list input, .rendered-markdown .ques-list input {
+  position: absolute;
+  left: -40px;
+  top: 50%;
+  margin-top: -7px;
+}
+.ques-view textarea, .rendered-markdown textarea {
+  border-radius: 2px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  min-height: 100px;
+}
+.ques-view code, .rendered-markdown code {
+  font-size: 12px;
+  background: var(--bg-light);
+  border-radius: 3px;
+  border: 1px solid var(--border-all);
+  padding: 0 3px;
+  color: #e74c3c;
+  margin: 0 2px;
+}
+.ques-view pre, .rendered-markdown pre {
+  padding: 6px 12px;
+  background: var(--bg-light);
+  border: 1px solid var(--border-all);
+  border-radius: 3px;
+  word-break: break-all;
+}
+.ques-view pre code, .rendered-markdown pre code {
+  background: none;
+  border: none;
+  color: var(--text-normal);
+  padding: 0;
+  margin: 0;
+}
+.ques-view hr, .rendered-markdown hr {
+  border: none;
+  border-top: 1px solid var(--border-all);
+}
+.ques-view blockquote, .rendered-markdown blockquote {
+  margin: 0.5em 0;
+  padding: 2px 14px;
+  font-size: 12px;
+  background: var(--bg-light);
+  border-left: 4px solid var(--border-all);
+}
+.ques-view table, .rendered-markdown table {
+  margin: 0 auto;
+}
+.ques-view table th, .rendered-markdown table th, .ques-view table td, .rendered-markdown table td {
+  border: 1px solid var(--border-all);
+  padding: 2px 4px;
+  font-size: 12px;
+}
+.ques-view .ques-score, .rendered-markdown .ques-score {
+  color: var(--text-light);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.rendered-markdown blockquote {
+  margin: 0.5em 0;
+  padding: 2px 14px;
+  font-size: 12px;
+  background: var(--bg-light);
+  border-left: 4px solid var(--border-all);
+}
+.rendered-markdown blockquote p {
+  margin-bottom: 0;
+}
+.rendered-markdown table td, .rendered-markdown table th {
+  border: 1px solid var(--border-all);
+  padding: 5px;
+}
+.rendered-markdown p:first-child {
+  margin: 0;
+}
+.katex-mathml {
+  display: none;
+}
+.code {
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Monaco, Courier, "Courier New", monospace;
+}
+</style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.7.1/dist/katex.min.css" integrity="sha256-tkzDFSl16wERzhCWg0ge2tON2+D6Qe9iEaJqM4ZGd4E=" crossorigin="anonymous">
+</head>
+<body>
+
+<div><div class="paper" style="max-width:940px;margin:auto" data-reactroot=""><div style="padding:16px;text-align:center;font-size:24px;font-weight:bold">第四、五章习题</div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">开始时间</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="2021/04/15 24:00:00">2021/04/15 24:00:00</span></div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">结束时间</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="2021/04/22 23:59:00">2021/04/22 23:59:00</span></div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">答题时长</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="11519分钟">11519分钟</span></div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">答卷类型</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="标准答案">标准答案</span></div><div style="width:calc(100% / 3);display:inline-flex;padding:4px"><span style="font-weight:bold;min-width:56px">总分</span><span style="margin-left:8px;overflow:hidden;text-overflow:ellipsis" title="100">100</span></div><hr/><div style="display:flex;font-size:16px;margin-top:16px"><span style="flex-grow:1;font-weight:bold">单选题</span><span>得分：暂无</span><span style="margin-left:20px">总分：95</span></div><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-1</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>SQL中的视图机制提高了数据库系统的( )。</p>
+</div></div><div style="color:gray;word-break:keep-all">(5分)</div></div><div><div><input type="radio" id="A" name="1380721165136461824" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>完整性</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1380721165136461824" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>并发控制</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1380721165136461824" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>隔离性</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1380721165136461824" value="D" disabled="" checked=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>安全性</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-2</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>SQL语言的GRANT和REVOKE语句主要是用来维护数据库的( )。</p>
+</div></div><div style="color:gray;word-break:keep-all">(5分)</div></div><div><div><input type="radio" id="A" name="1380721165136461825" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>完整性</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1380721165136461825" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>可靠性</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1380721165136461825" value="C" disabled="" checked=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>安全性</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1380721165136461825" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>一致性</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-3</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>安全性控制一个主要是防范是（），防止他们对数据库数据的存取。</p>
+</div></div><div style="color:gray;word-break:keep-all">(5分)</div></div><div><div><input type="radio" id="A" name="1380721165140656128" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>不合语义的数据</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1380721165140656128" value="B" disabled="" checked=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>非法用户</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1380721165140656128" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>不正确的数据</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1380721165140656128" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>非法操作</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-4</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>保护数据库，防止未经授权或不合法的使用造成的数据泄露、非法更改或破坏。这是指数据的?</p>
+</div></div><div style="color:gray;word-break:keep-all">(5分)</div></div><div><div><input type="radio" id="A" name="1380721165140656129" value="A" disabled="" checked=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>安全性</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1380721165140656129" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>完整性</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1380721165140656129" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>并发控制</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1380721165140656129" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>恢复</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-5</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>SQL语言中，用GRANT／REVOKE语句实现数据库的。</p>
+</div></div><div style="color:gray;word-break:keep-all">(5分)</div></div><div><div><input type="radio" id="A" name="1380721165140656130" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>并发控制</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1380721165140656130" value="B" disabled="" checked=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>安全性控制</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1380721165140656130" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>一致性控制</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1380721165140656130" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>完整性控制</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-6</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>视图创建后，数据库中存放的是。</p>
+</div></div><div style="color:gray;word-break:keep-all">(5分)</div></div><div><div><input type="radio" id="A" name="1380721165140656131" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>查询语句</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1380721165140656131" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>查询结果</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1380721165140656131" value="C" disabled="" checked=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>视图定义</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1380721165140656131" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>所引用基本表的定义</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-7</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>创建视图的原则正确的是（）。</p>
+</div></div><div style="color:gray;word-break:keep-all">(5分)</div></div><div><div><input type="radio" id="A" name="1380721165140656132" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>只能建立在一个基本表上</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1380721165140656132" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>能建立在多个基本表上，但不能建立在视图上</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1380721165140656132" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>可以建立在视图上，但不能同时建立在基本表和视图上</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1380721165140656132" value="D" disabled="" checked=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>可以建立在基本表和视图上</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-8</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>数据库中只存放视图的。</p>
+</div></div><div style="color:gray;word-break:keep-all">(5分)</div></div><div><div><input type="radio" id="A" name="1380721165140656133" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>操作</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1380721165140656133" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>对应的数据</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1380721165140656133" value="C" disabled="" checked=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>定义</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1380721165140656133" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>限制</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-9</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>在视图上不能完成的操作是。</p>
+</div></div><div style="color:gray;word-break:keep-all">(5分)</div></div><div><div><input type="radio" id="A" name="1380721165140656134" value="A" disabled="" checked=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>定义新表</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1380721165140656134" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>查询视图</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1380721165140656134" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>更新视图</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1380721165140656134" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>定义视图</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-10</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>学生关系S（S#,SNAME,SEX）,课程关系C（C#,CNAME）,学生选课关系SC（S#,C#,GRADE）,查询选修数据库原理课的男生姓名，涉及到的关系？</p>
+</div></div><div style="color:gray;word-break:keep-all">(5分)</div></div><div><div><input type="radio" id="A" name="1380721502823989248" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>S</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1380721502823989248" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>S,SC</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1380721502823989248" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>C,SC</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1380721502823989248" value="D" disabled="" checked=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>S,C,SC</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-11</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>设有关系SC(SNO,CNO,GRADE) ,主码是（SNO,CNO），按照实体完整性规则，下面说法正确的是？</p>
+</div></div><div style="color:gray;word-break:keep-all">(5分)</div></div><div><div><input type="radio" id="A" name="1380721502823989249" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>只有SNO不能取空值</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1380721502823989249" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>只有CNO不能取空值</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1380721502823989249" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>只有GRADE不能取空值</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1380721502823989249" value="D" disabled="" checked=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>SNO和CNO都不能取空值</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-12</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>SQL命令中，用户定义新关系时，引用其他关系的主码作为外码的关键字是( )。</p>
+</div></div><div style="color:gray;word-break:keep-all">(5分)</div></div><div><div><input type="radio" id="A" name="1380721502823989250" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>INSERT</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1380721502823989250" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>DELETE</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1380721502823989250" value="C" disabled="" checked=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>REFERENCES</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1380721502823989250" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>SELECT</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-13</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>SQL命令的短语中，下列不是定义属性上约束条件的是（）。</p>
+</div></div><div style="color:gray;word-break:keep-all">(5分)</div></div><div><div><input type="radio" id="A" name="1380721502823989251" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>NOT NULL短语</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1380721502823989251" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>UNIQUE短语</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1380721502823989251" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>CHECK短语</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1380721502823989251" value="D" disabled="" checked=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>HAVING短语</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-14</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>关系模式的候选码可以有( )。</p>
+</div></div><div style="color:gray;word-break:keep-all">(5分)</div></div><div><div><input type="radio" id="A" name="1380721502823989252" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>1个</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1380721502823989252" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>多个</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1380721502823989252" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>0个</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1380721502823989252" value="D" disabled="" checked=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>1个或多个</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-15</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>在CREATE  TABLE语句中可以用（    ）短语来定义元组上的约束条件。</p>
+</div></div><div style="color:gray;word-break:keep-all">(5分)</div></div><div><div><input type="radio" id="A" name="1380721502823989253" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>CLUSTER</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1380721502823989253" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>ALTER</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1380721502823989253" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>WITH GRANT OPTION</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1380721502823989253" value="D" disabled="" checked=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>CHECK</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-16</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>数据库中（      ）是指数据的正确性和相容性。</p>
+</div></div><div style="color:gray;word-break:keep-all">(5分)</div></div><div><div><input type="radio" id="A" name="1380721502823989254" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>安全性</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1380721502823989254" value="B" disabled="" checked=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>完整性</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1380721502823989254" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>并发性</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1380721502823989254" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>恢复性</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-17</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>关于外键说法正确的是。</p>
+</div></div><div style="color:gray;word-break:keep-all">(5分)</div></div><div><div><input type="radio" id="A" name="1380721502823989255" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>外键必须和相应的主键同名</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1380721502823989255" value="B" disabled="" checked=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>外键和主键可以不同名，只要定义在相同的域即可</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1380721502823989255" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>外键值不允许为空</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1380721502823989255" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>外键的取值只允许等于所参照关系中某个主键值</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-18</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>一个关系只有一个。</p>
+</div></div><div style="color:gray;word-break:keep-all">(5分)</div></div><div><div><input type="radio" id="A" name="1380721502823989256" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>候选码</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1380721502823989256" value="B" disabled=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>外码</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1380721502823989256" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>主属性</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1380721502823989256" value="D" disabled="" checked=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>主码</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">2-19</div><div style="overflow:auto;flex-grow:1"><div style="display:flex"><div style="flex-grow:1"><div class="rendered-markdown"><p>实体完整性要求主属性不能取空值，这一点可以通过（ ）来保证。</p>
+</div></div><div style="color:gray;word-break:keep-all">(5分)</div></div><div><div><input type="radio" id="A" name="1380721502823989257" value="A" disabled=""/><label style="margin-left:4px" for="A"><div style="display:flex"><div>A.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>定义外码</p>
+</div></div></div></label></div><div><input type="radio" id="B" name="1380721502823989257" value="B" disabled="" checked=""/><label style="margin-left:4px" for="B"><div style="display:flex"><div>B.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>定义主码</p>
+</div></div></div></label></div><div><input type="radio" id="C" name="1380721502823989257" value="C" disabled=""/><label style="margin-left:4px" for="C"><div style="display:flex"><div>C.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>用户定义的完整性</p>
+</div></div></div></label></div><div><input type="radio" id="D" name="1380721502823989257" value="D" disabled=""/><label style="margin-left:4px" for="D"><div style="display:flex"><div>D.</div><div style="margin-left:4px"><div class="rendered-markdown"><p>关系系统自动</p>
+</div></div></div></label></div></div></div></div></div><hr/><div style="display:flex;font-size:16px;margin-top:16px"><span style="flex-grow:1;font-weight:bold">填空题</span><span>得分：暂无</span><span style="margin-left:20px">总分：5</span></div><div style="padding-bottom:8px;margin-top:12px"><div style="display:flex"><div style="margin-right:12px;white-space:nowrap">4-1</div><div style="overflow:auto;flex-grow:1"><div><div class="rendered-markdown"><p>假设存在一张职工表，包含“性别”属性，要求这个属性的值只能取“男”或“女”，这属于  <span data-reactroot=""><input type="text" style="max-width:none;width:31.2ch;max-height:500px" value="自定义|用户定义|用户自定义" disabled=""/><span style="margin-left:4px;color:gray">(5分)</span></span> 的完整性</p>
+</div></div></div></div></div><hr/></div></div>
+
+</body>
+</html>

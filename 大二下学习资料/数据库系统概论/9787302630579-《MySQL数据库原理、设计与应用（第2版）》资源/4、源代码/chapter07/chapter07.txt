@@ -1,0 +1,33 @@
+﻿7.2.1 创建用户--4.创建用户时设置密码管理选项
+
+mysql -u test7 -p777777
+
+7.2.1 创建用户--5.创建用户时设置账户锁定选项
+
+mysql -utest8 -p
+
+7.2.2 修改用户--多学一招：修改登录密码 
+
+mysqladmin -u test1 -p password
+
+7.2.2 修改用户--多学一招：root用户密码丢失找回
+
+mysql -uroot –p
+
+7.2.2 修改用户--2.修改资源控制选项
+
+mysql –utest1 -p
+
+7.3.3 回收权限
+
+mysql –u test1 –p123456
+
+7.4 动手实践：用户与权限练习
+
+ipconfig
+
+mysql -h 192.168.1.45 -u shop –p
+
+
+
+
